@@ -39,14 +39,37 @@ with open(csvpath) as csvfile:
     Election_result = {"Diana DeGette":Vote_DD, 'Raymon Anthony Doane':Vote_RAD, 'Charles Casper Stockham':Vote_CCS }
     winner = max(Election_result, key=Election_result.get)
 
+# Specify the file to write to
+output_path = os.path.join( "Analysis", "PyRoll_Result.txt")
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, 'w') as csvfile:
+
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile, delimiter=',')
+
+    # Write by rows
+    csvwriter.writerow(["Election Results"])
+    csvwriter.writerow(["-------------------------------------"])
+    csvwriter.writerow([f"Total Votes: {len(vote)}"])
+    csvwriter.writerow(["-------------------------------------"])
+    csvwriter.writerow([f"Charles Casper Stockham: {Prec_CCS}% ({Vote_CCS})"])
+    csvwriter.writerow([f"Diana DeGette: {Prec_DD}% ({Vote_DD})"])
+    csvwriter.writerow([f"Raymon Anthony Doane: {Prec_RAD}% ({Vote_RAD})"])
+    csvwriter.writerow(["-------------------------------------"])
+    csvwriter.writerow([f"Winner:{winner}"])
+    csvwriter.writerow(["-------------------------------------"])
+
+  
+    
     #print list
-    print("Election Results")
-    print("-------------------------------------")
-    print("Total Votes:", len(vote)) 
-    print("-------------------------------------")
-    print("Charles Casper Stockham:",Prec_CCS,"%","(", str(Vote_CCS), ")")
-    print("Diana DeGette:",Prec_DD,"%","(", str(Vote_DD), ")")
-    print("Raymon Anthony Doane:",Prec_RAD,"%","(", str(Vote_RAD), ")")
-    print("-------------------------------------")
-    print("Winner:", winner)
-    print("-------------------------------------")
+    # print("Election Results")
+    # print("-------------------------------------")
+    # print("Total Votes:", len(vote)) 
+    # print("-------------------------------------")
+    # print("Charles Casper Stockham:",Prec_CCS,"%","(", str(Vote_CCS), ")")
+    # print("Diana DeGette:",Prec_DD,"%","(", str(Vote_DD), ")")
+    # print("Raymon Anthony Doane:",Prec_RAD,"%","(", str(Vote_RAD), ")")
+    # print("-------------------------------------")
+    # print("Winner:", winner)
+    # print("-------------------------------------")
